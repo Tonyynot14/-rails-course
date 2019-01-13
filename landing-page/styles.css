@@ -89,17 +89,24 @@ h1 {
 #image {
   width:100%;
 }
+      /*Makes picture and details have a box surrounded it with padding on all sides 
+      */
 
 .pictureanddetails{
   background-color: #333;
   padding: 10px;
 }
 
+/* Makes text in Footer centered 
+*/
 
 footer {
  
   text-align: center;
 }
+
+/* adds a margin so that the footer is not directly below the previous elements in the html. Do not know why the margin top takes so much room.
+*/
 .end {
   margin-top: 750px;
 }
