@@ -1,0 +1,112 @@
+ 
+ /*Styles for background image for entire page and gradient to darken it so white text appears better.
+ */
+ body {
+     text-shadow: 0 1px 0 black;
+                background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("woodenfloor.jpg");
+    color: white;
+    
+            }
+       
+       /* Align all h1 units to left of the page and float them left so that they can all be on the same line in nav bar. 
+       */    
+h1 {
+    text-align: left;
+    font-size: 40px;
+    float:left;
+    margin-left:15px;
+}
+
+  
+       /*clip overflow for navigation bar and set color and height of bar
+       */    
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  height:100px;
+
+}
+  
+       /* Make image height of nav bar
+       */    
+.topnav img{
+  float: left;
+  height: 100px;
+  width: 100px;
+}
+
+  
+       /*Floats text to right of page so that navigation goes to the right side of the navigation bar and gets rid of underline and sets text color
+       */    
+
+
+.topnav a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  padding: 45px 16px;
+  text-decoration: none;
+}
+
+  
+       /*Sets up page with two equal width columns this one on the left
+       */    
+
+.leftcolumn {
+  float: left;
+  width: 50.00%;
+  
+}
+  
+       /*Sets up page with two equal width columns on on the right
+       */    
+  
+.rightcolumn{
+  float: left;
+  width: 50.00%;
+  
+}
+
+  
+       /* addes padding for text that appears on the right side 
+       */    
+
+.leftcolumnpadding
+{
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+
+  
+       /* makes the width of the image the same as the right column
+       */    
+#image {
+  width:100%;
+}
+      /*Makes picture and details have a box surrounded it with padding on all sides 
+      */
+
+.pictureanddetails{
+  background-color: #333;
+  padding: 10px;
+}
+
+/* Makes text in Footer centered 
+*/
+
+footer {
+ 
+  text-align: center;
+}
+
+/* adds a margin so that the footer is not directly below the previous elements in the html. Do not know why the margin top takes so much room.
+*/
+.end {
+  margin-top: 750px;
+}
