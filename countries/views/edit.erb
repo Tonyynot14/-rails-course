@@ -1,0 +1,11 @@
+<html>
+    <body>
+        <form action="/questions/edit" method="post">
+            <input type="hidden" name="id" value=<%= @question.id %>>
+            <textarea name="question"><%= @question.question %></textarea>
+            <input type="text" value=<%= @question.answer %> name="answer">
+            <input type="text" name="flag" value=<%= @question.flag %>>
+            <input type="submit" value="Save">
+        </form>
+    </body>
+</html>
