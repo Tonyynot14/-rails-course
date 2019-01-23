@@ -1,0 +1,13 @@
+<form action="/contacts/edit" method="post">
+            <input type="hidden" name="id" value=<%= @contact.id %>>
+           
+             <input type="text" name="first_name"value =<%= @contact.first_name %>>
+            <input type="text" name="last_name" value = <%= @contact.last_name %>>
+            <input type="text" name="phone" value =<%= @contact.phone %>>
+            <input type="email" name="email" value =<%= @contact.email %>>
+            <input type="text" name="address" value =<%= @contact.address%>>
+            <input type="text" name="city" value =<%= @contact.city%>>
+            <input type="text" name="state" value =<%= @contact.state %>>
+            <input type="text" name="zip" value =<%= @contact.zip %>>
+            <input type="submit" value="Save">
+</form>
