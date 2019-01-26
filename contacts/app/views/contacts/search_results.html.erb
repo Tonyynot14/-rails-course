@@ -1,0 +1,17 @@
+<h1>Results with first name  or last name <%=@name%></h1>
+<% @contacts.each do |contact|  %>
+
+
+
+<div>
+  
+   <%= contact.first_name %> 
+   <%= contact.last_name %> 
+   <%= contact.phone %> 
+   <%= contact.email %>
+   <%= contact.address %> 
+   <%= contact.city %> 
+   <%= contact.state %>
+   <%= contact.zip %> 
+</div>
+<% end %>
