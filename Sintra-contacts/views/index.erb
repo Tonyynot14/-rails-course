@@ -1,0 +1,39 @@
+
+<a href="contacts/new">New</a>
+
+<style>
+   .search_bar{
+      float:right;
+   }
+</style>
+
+<style>
+   .contacts_info{
+      float:Left;
+   }
+</style>
+
+<div class="search_bar">
+   <form action="/contacts/search_results" method="get">
+            <input type="text" name="name" placeholder="First or last Name">
+            <input type="submit" value="Search">
+</form>
+</div>
+
+<% @contacts.each do |contact|  %>
+
+
+
+
+   <div class="contacts_info">
+      <a href= "/contacts/edit?id=<%= contact.id%>">Edit</a>
+         <%= contact.first_name %> 
+         <%= contact.last_name %> 
+         <%= contact.phone %> 
+         <%= contact.email %>
+         <%= contact.address %> 
+         <%= contact.city %> 
+         <%= contact.state %>
+         <%= contact.zip %> 
+   </div>
+<% end %>
