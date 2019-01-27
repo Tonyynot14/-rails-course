@@ -1,0 +1,17 @@
+<a href="/courses/new">New</a>
+
+<% @courses.each do |course| %>
+<div>
+    
+    <h4><%= course.name%></h4>
+   Location: <%=course.location%>
+    <p>
+        <%= course.description%>
+    </p>
+    <!--has to go to edit?id= ruby information -->
+    <a href="/courses/edit?id=<%= course.id %>">Edit</a>
+    <a href="/courses/show?id=<%=course.id %>">Show</a>
+    <!--finished delete method lesson did not -->
+    <a href="/courses/delete?id=<%=course.id %>">Delete</a>
+</div>
+<%end%>
