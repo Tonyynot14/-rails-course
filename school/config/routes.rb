@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   get "/courses" => "courses#index"
   get "/courses/edit" => "courses#edit"
   post "courses/edit" => "courses#update"
-  get "courses/delete" => "courses#delete"
   get "courses/show" => "courses#show"
-  
+  #made a delete instead of get 
+  delete "/courses/delete" => "courses#delete"
   
   #routes for students 
   get "/students/new" =>"students#new"
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "/students" => "students#index"
   get "/students/edit" => "students#edit"
   post "/students/edit" => "students#update"
-  get "/students/delete" => "students#delete"
+  #made a delete instead of get 
+  delete "/students/delete" => "students#delete"
   
 end

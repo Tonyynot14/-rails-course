@@ -6,6 +6,9 @@
     </div>
     <a href="/students/edit?id=<%= student.id %>">Edit</a>
     <!--finished delete method lesson did not -->
-    <a href="/students/delete?id=<%=student.id %>">Delete</a>
-
+    
+    
+    <!-- code to delete using -->
+    <%= link_to "Delete Student", { action: "delete", id: student.id },
+                                method: :delete, data: { confirm: "Are you sure?" } %>
 <%end%>
