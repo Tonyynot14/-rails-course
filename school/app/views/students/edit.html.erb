@@ -1,0 +1,30 @@
+
+    
+    
+<form action="/students/edit" method="post">
+    <input type="hidden" name="id" value="<%= @student.id%>">
+    <div>
+        <input type="text" name=first_name value="<%=@student.first_name %>">
+    </div>
+     <div>
+        <input type="text" name=last_name value="<%=@student.last_name %>">
+    </div>
+     <div>
+        <input type="text" name=picture value="<%=@student.picture %>">
+    </div>
+     <div>
+        <select name="course_id">
+           <% @courses.each do |course| %>
+           <!--If statement makes sure the default selected is the course the student has in the database -->
+           <% if @student.course_id == course.id%>
+           <option value ="<%=course.id%>" selected="selected"><%=course.name%></option>
+           <%else%>
+            <option value ="<%=course.id%>"><%=course.name%></option>
+            <%end%>
+            <%end%>
+        </select>
+    </div>
+     <div>
+        <input type="submit" value='Save'>
+    </div>
+</form>

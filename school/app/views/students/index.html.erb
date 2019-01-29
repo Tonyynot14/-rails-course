@@ -1,0 +1,14 @@
+<a href="/students/new">New Student</a>
+
+<% @students.each do |student| %>
+    <div>
+        <%= student.first_name%> <%=student.last_name %>
+    </div>
+    <a href="/students/edit?id=<%= student.id %>">Edit</a>
+    <!--finished delete method lesson did not -->
+    
+    
+    <!-- code to delete using -->
+    <%= link_to "Delete Student", { action: "delete", id: student.id },
+                                method: :delete, data: { confirm: "Are you sure?" } %>
+<%end%>
