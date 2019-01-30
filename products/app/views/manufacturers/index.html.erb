@@ -1,0 +1,21 @@
+<%= link_to 'New',new_manufacturer_path %>
+
+<% @manufacturers.each do |manufacturer|%>
+    
+    <h4> <%=manufacturer.name%></h4>
+    <%= manufacturer.city%>
+    <%= manufacturer.state%>
+    <%= manufacturer.zip%>
+    <%= manufacturer.country%>
+    <%= manufacturer.manufacturer_type%>  
+    <%= link_to 'Edit',edit_manufacturer_path(manufacturer.id) %>
+    <!-- prevent deletion if it has products still in database -->
+    <!-- needs to be able to not look like link-->
+    <%= link_to_unless !manufacturer.products.empty?, 'Destroy', manufacturer_path(manufacturer.id),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } do link_to('cannot delete')end %>
+               <%= link_to 'Show', manufacturer_path(manufacturer.id),
+              method: :get,
+              data: { confirm: 'Are you sure?' } %>
+   
+<% end %>

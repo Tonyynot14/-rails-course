@@ -1,0 +1,9 @@
+<h1><%=@manufacturer.name%></h1>
+
+<h5>Products</h5>
+
+<%@manufacturer.products.each do |product| %>
+<div>
+    <%=product.item_name%> <%=product.item_description%><%=product.item_picture%>
+</div>
+<%end%>
