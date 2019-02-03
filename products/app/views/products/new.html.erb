@@ -1,0 +1,18 @@
+<%= form_for @product do |f| %>
+    <div>
+        <%= f.text_field :item_name, placeholder: 'Product Name'%>
+    </div>
+    <div>
+        <%= f.text_area :item_description, placeholder: 'Item Description'%>
+    </div>
+    <div>
+        <%= f.text_field :item_picture, placeholder: 'Picture of Item'%>
+    </div>
+    <div>
+        <%= f.select :manufacturer_id, options_from_collection_for_select(@manufacturers,:id,:name)%>
+    </div>
+    <div>
+        <%= f.submit 'Save'%>
+    </div> 
+    
+<%end%>
