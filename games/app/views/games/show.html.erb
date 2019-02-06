@@ -1,0 +1,13 @@
+<h1><%=@game.name%></h1>
+
+<h2>Played By: </h2>
+    
+    <% @game.players.each do |player|%>
+    <div>
+        <h5><%=player.gamerTag%></h5>
+        <p><%=player.first_name%></p>
+        
+    </div>
+    <%= link_to 'Delete', players_remove_game_path(game_id: game.id, player_id: @player.id), method: :delete%>
+    
+    <%end%>
