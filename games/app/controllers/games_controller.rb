@@ -27,7 +27,7 @@ class GamesController < ApplicationController
         redirect_to games_path
     end
     def show
-        @game = game.find(params[:id])
+        @game = Game.find(params[:id])
         @players=Player.all
     end
     
