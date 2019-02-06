@@ -31,4 +31,19 @@ class GamesController < ApplicationController
         @players=Player.all
     end
     
+    def delete_player
+        game =Game.find(params[:game_id])
+        player_games =PlayerGame.where(
+            player_id: params[:player_id],
+            game_id: params[:game_id]
+            )
+            player_games.each do |player_game|
+                player_game.destroy
+            end
+            
+        redirect_to game_path(game)
+            
+        
+    end
+    
 end
