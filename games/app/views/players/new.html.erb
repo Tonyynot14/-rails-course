@@ -1,0 +1,21 @@
+<%=form_for @player do |f|%>
+<div>
+    <%=f.text_field :gamerTag ,placeholder:"GamerTag"%> 
+</div>
+    <div>
+          <%=f.text_field :first_name ,placeholder:"First Name"%> 
+    </div>
+    
+    <div>
+        <%=f.text_field :last_name ,placeholder:"Last Name"%> 
+    </div>
+    
+    <div>
+        <%=f.text_field :avatar ,placeholder:"Avatar photo"%> 
+    </div>
+  
+     <div>
+        <%=f.submit "Save"%>
+    </div>
+
+<%end%>

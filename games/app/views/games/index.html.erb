@@ -1,0 +1,17 @@
+<%=link_to "New", new_game_path%>
+
+<% @games.each do |game|%>
+<div>
+    <h1><%=game.name%></h1>
+    <p><%=game.genre%> </p>
+    <p>
+        <%=game.description%>
+    </p>
+    <h5>
+        <%=game.publisher%>
+    </h5>
+</div>
+<%= link_to "Edit",edit_game_path(game.id)%>
+<%= link_to "Show",game_path(game.id)%>
+
+<%end%>
