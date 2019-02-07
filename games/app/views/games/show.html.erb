@@ -8,6 +8,6 @@
         <p><%=player.first_name%></p>
         
     </div>
-    <%= link_to 'Delete', games_remove_player_path(game_id: @game.id, player_id: player.id), method: :delete%>
+    <%= link_to 'Delete', game_remove_player_path(game_id: @game.id, player_id: player.id), method: :delete%>
     
     <%end%>
