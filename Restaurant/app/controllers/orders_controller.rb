@@ -27,15 +27,35 @@ class OrdersController < ApplicationController
     def prepare
         @order =Order.find(params[:id])
         @dishes=Dish.all
+        @total= 0
+        #Summing prices of all dishes in order
+        @order.dishes.each do |dish|
+            @total= @total + dish.price
+        end
+        @total =@total.round(2)
     end
     
-    def add_dish
+    def add
+        @order = Order.find(params[:id])
+       order_dish = OrderDish.new
+       order_dish.dish_id = params[:dish_id]
+       order_dish.order_id = params[:id]
+       order_dish.save
+       redirect_to prepare_order_path(@order)
     end
     
-    def remove_dish
+    def remove
+        @order = Order.find(params[:id])
+        order_dish = OrderDish.find(params[:order_dish_id])
+        order_dish.destroy
+        redirect_to prepare_order_path(@order)
     end
     
     def submit
+        @order = Order.find(params[:id])
+        @order.status ="Submitted"
+        @order.save
+        redirect_to orders_path
     end
     
 end

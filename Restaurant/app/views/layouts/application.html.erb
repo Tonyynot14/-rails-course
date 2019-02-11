@@ -10,8 +10,11 @@
   </head>
 
   <body>
-    <%=link_to 'Dishes',dishes_path%>
+    <main class="container">
+    <%=link_to 'Dishes',dishes_path%> | <%=link_to 'Order',orders_path%>
+   
     <p></p>
     <%= yield %>
+    </main>
   </body>
 </html>

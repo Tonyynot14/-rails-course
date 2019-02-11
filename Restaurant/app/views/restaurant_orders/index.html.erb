@@ -1,0 +1,43 @@
+<%@orders.each do |order|%>
+    <div class="row">
+        <div class="col-2">
+            <%=order.status%>
+        </div>
+        <div class="col-6">
+            <%= order.street_address%>
+            <%= order.city%>
+            <%= order.state%>
+             <%= order.zip%>
+               </div>
+        <div class="col-2">
+            $<%= order.total %>
+        </div>
+     
+        <div class="col-2">
+            <%if order.status =='Submitted'%>
+            <%=link_to 'Prepare',prepare_path(order),method: :put,class:'btn btn-sm btn-secondary mb-2' %>
+            <% elsif order.status =="Preparing"%>
+            <%=link_to 'Enroute',enroute_path(order),method: :put,class:'btn btn-sm btn-secondary mb-2' %>
+            <% elsif order.status =="Enroute"%>
+            <%=link_to 'Deliver',deliver_path(order),method: :put,class:'btn btn-sm btn-secondary mb-2' %>
+            <% elsif order.status =="Delivering"%>
+            <%=link_to 'Complete',complete_path(order),method: :put,class:'btn btn-sm btn-secondary mb-2' %>
+            <%end%>
+        </div>
+    </div>
+    <% if order.status == 'Preparing'%>
+        <% order.order_dishes.each do |order_dish|%>
+        
+            
+              <div class="card" style="width: 8em;">
+                     <%=image_tag order_dish.dish.picture,height: 50%>
+                    <div class="card-body">
+                       <h4><%=order_dish.dish.name%></h4>
+                        
+                    </div>
+                    
+                </div>
+        
+        <%end%>
+    <%end%>
+<%end%>

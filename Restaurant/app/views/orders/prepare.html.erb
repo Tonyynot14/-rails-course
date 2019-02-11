@@ -1,1 +1,47 @@
-Prepare order
+
+<div class="row">
+    <div class="col-8">
+        <h2>Menu</h2>
+            <% @dishes.each do |dish| %>
+              <div class="card" style="width: 18rem;">
+                <%=image_tag dish.picture,height: 100%>
+            <div class="card-body">
+               <h4><%=dish.name%></h4>
+               <p> <%=dish.description%></p>
+               
+                <p>$<%=dish.price%></p>
+                    
+                    <%=link_to 'Add ',add_order_path(@order,dish_id: dish.id), method: :post, class: "btn btn-primary"%>
+                </div>
+    </div>
+
+
+
+<%end%>
+    </div>
+
+
+
+    <div class="col-4">
+        <!-- Used card css from bootstrap before lesson started and liked the look used media object in lesson-->
+        <h4>Order:</h4>
+        <h5><%= @order.order_dishes.length %> items</h5>
+        <% @order.order_dishes.each do |order_dish| %>
+        <div>
+            <div class="card" style="width: 18rem;">
+                 <%=image_tag order_dish.dish.picture,height: 100%>
+                <div class="card-body">
+                   <h4><%=order_dish.dish.name%></h4>
+                   
+                   
+                    <p>$<%=order_dish.dish.price %></p>
+                    
+                    <%=link_to 'Remove ', remove_order_path(@order,order_dish_id: order_dish.id), method: :delete, class: "btn btn-danger"%>
+                </div>
+                
+            </div>
+        <%end%>
+        <h6>Total: $<%=@total%></h6>
+        <%=link_to 'Submit', submit_order_path(@order), method: :put,class: "btn btn-success"%>
+    </div>
+</div>
