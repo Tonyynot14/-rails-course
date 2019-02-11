@@ -1,0 +1,22 @@
+<%= form_for @order do |f| %>
+    
+    <div>
+        <%=f.text_field :street_address ,placeholder:"Street Address"%> 
+    </div>
+  
+    <div>
+        <%=f.text_field :city ,placeholder:"City"%> 
+    </div>
+    
+    <div>
+        <%=f.text_field :state ,placeholder:"State"%> 
+    </div>
+    <div>
+        <%=f.text_field :zip ,placeholder:"ZIP"%> 
+    </div>
+ 
+     <div>
+        <%=f.submit "Create"%>
+    </div>
+    
+    <%end%>
