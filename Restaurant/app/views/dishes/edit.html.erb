@@ -1,4 +1,9 @@
 <h2>Edit Dish</h2>
+<%if flash[:error]%>
+<div class= "alert alert-danger">
+    <h3><%=flash[:error]%></h3>
+</div>
+<%end%>
 
 <!--Lets you use same form for both new and edit it yields like application.html.erb
 called partials file name has underscore _-->
