@@ -1,0 +1,15 @@
+<%=link_to "New",new_dish_path%>
+
+<%@dishes.each do |dish|%>
+    <div class="card" style="width: 18rem;">
+         <%=image_tag dish.picture,height: 100%>
+        <div class="card-body">
+           <h4><%=dish.name%></h4>
+           <p> <%=dish.description%></p>
+           
+            <p></p>
+            $<%=dish.price%>
+            <%=link_to 'Edit',edit_dish_path(dish.id),class: "btn btn-primary"%>
+            </div>
+    </div>
+<%end%>
