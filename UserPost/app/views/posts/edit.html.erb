@@ -1,0 +1,15 @@
+<%=form_for @post do |f|%>
+    
+  
+    <div>
+        <%=f.text_area  :info ,placeholder:"Post"%> 
+    </div>
+    
+    <div>
+        <%=f.text_field :picture ,placeholder:"Picture"%> 
+    </div>
+     <div>
+        <%=f.submit "Save"%>
+    </div>
+
+<%end%>
