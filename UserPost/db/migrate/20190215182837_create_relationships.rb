@@ -6,11 +6,9 @@ class CreateRelationships < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    #These indexs make searching faster but 
-    #also make sure that 
-    #records do not double with the unique attribute
-    add_index :relationships, :follower_id
+    #Faster finding and prevents redundant records 
+    add_index :relationships,:follower_id
     add_index :relationships, :followed_id
-    add_index :relationships, [:follower_id, :followed_id], unique: true
+    add_index :relationships [:followed_id,:follower_id], unique: true
   end
 end

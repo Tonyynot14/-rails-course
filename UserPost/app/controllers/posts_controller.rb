@@ -17,6 +17,7 @@ class PostsController < ApplicationController
         
     end
     def edit
+          @user = current_user
           @post =Post.find(params[:id])
     end
     def update
@@ -28,5 +29,12 @@ class PostsController < ApplicationController
         redirect_to posts_path
     end
     def show
+        @post =Post.find(params[:id])
+        @post.destroy
+        redirect_to posts_path
+        
+    end
+    def destroy
+    
     end
 end
