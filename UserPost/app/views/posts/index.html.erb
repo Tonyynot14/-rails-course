@@ -8,7 +8,7 @@
       
     <%end%>
     <%=link_to  relationship_path(current_user) do%>
-    <div>(<%=current_user.followers.count%>) Followers | (<%=current_user.following.count%>) Following</div>
+    <div style="padding-top:20px;">(<%=current_user.followers.count%>) Followers | (<%=current_user.following.count%>) Following</div>
     <%end%>
   </div>
 
@@ -22,6 +22,8 @@
           <%=post.info%>
           
             <%=link_to "Edit",edit_post_path(post.id)%>
+            <%=link_to "Delete",post_path(post.id), method: :delete%>
+            
           </div>
         </div>
      
@@ -41,18 +43,22 @@
       
       <%@users.each do |user|%>
         <%if !@user.following?(user) && user.id != @user.id%>
-          <div class="card" style="width: 8rem;">
+          <div class="card border border-secondary" style="width: 8rem;">
             
           
               <%if user.picture.nil? || user.picture.empty?%>
-                <img src ="https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg" height="100">
+                <%=link_to post_path(user.id) do%>
+                  <img src ="https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg" height="100">
+                <%end%>
               <%else%>
-              
-              <%= image_tag user.picture, height:100%>
-          
+                <%=link_to post_path(user.id) do%>
+                  <%= image_tag user.picture, height:100%>
+                <%end%>
                <%end%>
+               
          
             <div class="card-body ">
+              
               <h6 class="card-title"> <%=user.first_name%> <%=user.last_name%></h6>
              <% if !current_user.following?(user)%>
                <%= form_for(current_user.active_relationships.new) do |f| %>

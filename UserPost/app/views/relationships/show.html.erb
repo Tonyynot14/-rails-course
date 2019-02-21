@@ -1,14 +1,16 @@
 <div class="row">
   <div class="col-6">
-    <h6>Following</h6>
+    <h4>Following</h4>
     <% @user.following.each do |following| %>
-        <div class="card" style="width: 8rem;">
+        <div class="card border border-secondary" style="width: 8rem;">
           <%if following.picture.nil? || following.picture.empty?%>
+              <%=link_to post_path(following.id) do%>
                     <img src ="https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg" height="100">
+                  <%end%>
                   <%else%>
-                  
-                  <%= image_tag following.picture, height:100%>
-              
+                    <%=link_to post_path(following.id) do%>
+                      <%= image_tag following.picture, height:100%>
+                    <%end%>
                    <%end%>
           <div class="card-body">
          <h6 class="card-title"> <%=following.first_name%> <%=following.last_name%></h6>
@@ -24,17 +26,20 @@
 
 
   <div class="col-6">
-    <h6>Followers</h6>
+    <h4>Followers</h4>
     <% @user.followers.each do |follower| %>
-        <div class="card" style="width: 8rem;">
+        <div class="card border border-secondary" style="width: 8rem;">
           <%if follower.picture.nil? || follower.picture.empty?%>
-                    <img src ="https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg" height="100">
+            <%=link_to post_path(follower.id) do%>
+              <img src ="https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg" height="100">
+            <%end%>
           <%else%>
-                  
-            <%= image_tag follower.picture, height:100%>
+            <%=link_to post_path(follower.id) do%>  
+              <%= image_tag follower.picture, height:100%>
+            <%end%>
               
             <%end%>
-        <div class="card-body">
+        <div class="card-body ">
         <h6 class="card-title"> <%=follower.first_name%> <%=follower.last_name%></h6>
         
           </div>

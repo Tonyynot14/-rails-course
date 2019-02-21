@@ -29,12 +29,14 @@ class PostsController < ApplicationController
         redirect_to posts_path
     end
     def show
-        @post =Post.find(params[:id])
-        @post.destroy
-        redirect_to posts_path
+        #show other users posts
+        @user = User.find(params[:id])
+        @users = User.all
         
     end
     def destroy
-    
+        @post =Post.find(params[:id])
+        @post.destroy
+        redirect_to posts_path
     end
 end
