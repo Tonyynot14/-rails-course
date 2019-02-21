@@ -7,6 +7,7 @@
       <%= image_tag @user.picture, height:100%>
       
     <%end%>
+    <p><%=@user.first_name%> <%=@user.last_name%></p>
     <%=link_to  relationship_path(current_user) do%>
     <div style="padding-top:20px;">(<%=current_user.followers.count%>) Followers | (<%=current_user.following.count%>) Following</div>
     <%end%>
@@ -30,11 +31,12 @@
     <div class="col-6">
    
         
-      <%@user.posts.each do |post|%>
+      <%@user.posts.reverse.each do |post|%>
         <div class="media border border-secondary">
         <%= image_tag post.picture, height:100 ,class: "mr-3"%>
           <div class="media-body">
           <%=post.info%>
+          <p>Created: <%=post.updated_at.to_date%></p>
           
           </div>
         </div>

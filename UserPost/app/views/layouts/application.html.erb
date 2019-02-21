@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
     <style>
       .bd-placeholder-img {
@@ -35,12 +34,12 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <img src="https://www.athomeinedinburgh.co.uk/wp-content/uploads/Home-Icon.png" height="20">
-         
         <%=link_to "FriendPlace",posts_path,class:"navbar-brand"%>
+        
         <div class="collapse navbar-collapse" id="navbarsExample07">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active " >
-              <!--needs if statementfor login screen -->
+  
                <% if user_signed_in? %>
                  <a class="nav-link ml-4" href="#">Welcome back <%=current_user.first_name%></a>
                

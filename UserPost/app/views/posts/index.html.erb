@@ -1,33 +1,33 @@
+<!-- Displays user picture, defaults if picuture does not exist-->
 <div class="row">
   <div class="col-3">
     <%if @user.picture.nil? || @user.picture.empty?%>
       <img src ="https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg" height="150">
     <%else%>
-                
       <%= image_tag @user.picture, height:100%>
-      
     <%end%>
+    
     <%=link_to  relationship_path(current_user) do%>
-    <div style="padding-top:20px;">(<%=current_user.followers.count%>) Followers | (<%=current_user.following.count%>) Following</div>
+      <div style="padding-top:20px;">(<%=current_user.followers.count%>) Followers | (<%=current_user.following.count%>) Following</div>
     <%end%>
   </div>
-
+<!--Main part of page that shows post with ability to edit delete and create post -->
     <div class="col-6">
       <%=link_to "New Post",new_post_path%>
         
-      <%@user.posts.each do |post|%>
+      <%@user.posts.reverse.each do |post|%>
         <div class="media border border-secondary">
         <%= image_tag post.picture, height:100 ,class: "mr-3"%>
           <div class="media-body">
           <%=post.info%>
           
-            <%=link_to "Edit",edit_post_path(post.id)%>
-            <%=link_to "Delete",post_path(post.id), method: :delete%>
-            
+            <%=link_to "Edit",edit_post_path(post.id),class: "btn btn-sm btn-success float-right "%>
+            <%=link_to "Delete",post_path(post.id), method: :delete,class: "btn btn-sm btn-danger float-right"%>
+            <p>Created: <%=post.updated_at.to_date%></p>
           </div>
         </div>
      
-    <%end%>
+      <%end%>
     
     
     
@@ -36,8 +36,7 @@
 
 
        
- 
-  <!-- weird thing happening with div and spacing part of this to the next row -->
+ <!-- Suggested people to follow, current list shows everyone that user is not already following -->
   <div class="col-3">
     <h4 class="text-center">People to follow</h4>
       
