@@ -8,8 +8,8 @@
       
     <%end%>
     <p><%=@user.first_name%> <%=@user.last_name%></p>
-    <%=link_to  relationship_path(current_user) do%>
-    <div style="padding-top:20px;">(<%=current_user.followers.count%>) Followers | (<%=current_user.following.count%>) Following</div>
+    <%=link_to  relationship_path(@user)do%>
+    <div style="padding-top:20px;">(<%=@user.followers.count%>) Followers | (<%=@user.following.count%>) Following</div>
     <%end%>
     
     

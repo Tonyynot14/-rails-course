@@ -15,7 +15,7 @@
           <%end%>
           <div class="card-body">
             <h6 class="card-title"> <%=following.first_name%> <%=following.last_name%></h6>
-             <%= form_for(current_user.active_relationships.find_by(followed_id: following.id),
+             <%= form_for(@user.active_relationships.find_by(followed_id: following.id),
                     html: {method: :delete}) do |f| %>
                       <%=hidden_field_tag :followed_id, following.id%>
                       <%=f.submit "Unfollow", class:"btn btn-danger" %>
