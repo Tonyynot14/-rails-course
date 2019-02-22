@@ -1,0 +1,89 @@
+<!-- Displays user picture, defaults if picuture does not exist-->
+<div class="row">
+  <div class="col-3">
+    <%if @user.picture.nil? || @user.picture.empty?%>
+      <img src ="https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg" height="150">
+    <%else%>
+      <%= image_tag @user.picture, height:100%>
+    <%end%>
+    
+    <%=link_to  relationship_path(current_user) do%>
+      <div style="padding-top:20px;">(<%=current_user.followers.count%>) Followers | (<%=current_user.following.count%>) Following</div>
+    <%end%>
+  </div>
+<!--Main part of page that shows post with ability to edit delete and create post -->
+    <div class="col-6">
+      <%=link_to "New Post",new_post_path%>
+        
+      <%@user.posts.reverse.each do |post|%>
+        <div class="media border border-secondary">
+        <%= image_tag post.picture, height:100 ,class: "mr-3"%>
+          <div class="media-body">
+          <%=post.info%>
+          
+            <%=link_to "Edit",edit_post_path(post.id),class: "btn btn-sm btn-success float-right "%>
+            <%=link_to "Delete",post_path(post.id), method: :delete,class: "btn btn-sm btn-danger float-right"%>
+            <p>Created: <%=post.updated_at.to_date%></p>
+          </div>
+        </div>
+     
+      <%end%>
+    
+    
+    
+   
+    </div>
+
+
+       
+ <!-- Suggested people to follow, current list shows everyone that user is not already following -->
+  <div class="col-3">
+    <h4 class="text-center">People to follow</h4>
+      
+      <%@users.each do |user|%>
+        <%if !@user.following?(user) && user.id != @user.id%>
+          <div class="card border border-secondary" style="width: 8rem;">
+            
+          
+              <%if user.picture.nil? || user.picture.empty?%>
+                <%=link_to post_path(user.id) do%>
+                  <img src ="https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg" height="100">
+                <%end%>
+              <%else%>
+                <%=link_to post_path(user.id) do%>
+                  <%= image_tag user.picture, height:100%>
+                <%end%>
+               <%end%>
+               
+         
+            <div class="card-body ">
+              
+              <h6 class="card-title"> <%=user.first_name%> <%=user.last_name%></h6>
+             <% if !current_user.following?(user)%>
+               <%= form_for(current_user.active_relationships.new) do |f| %>
+                 <%=hidden_field_tag :followed_id , user.id%>
+                 <%=f.submit "Follow", class:"btn btn-primary" %>
+               <%end%>
+              <%else%>
+                <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
+                html: {method: :delete}) do |f| %>
+                  <%=hidden_field_tag :followed_id, user.id%>
+                  <%=f.submit "Unfollow", class:"btn btn-danger" %>
+                <%end%>
+              
+            <%end%>
+              </div>
+            </div>
+          <%end%>
+              
+              
+            
+        <%end%>
+      
+      
+    
+
+    
+  
+  </div>
+</div>
